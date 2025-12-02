@@ -9,8 +9,10 @@ def main():
         print("1. 지출 추가")
         print("2. 지출 목록 보기")
         print("3. 총 지출 보기")
-        print("4. 결제 수단별 통계 보기")
-        print("5. 종료")
+        print("4. 예산 설정")
+        print("5. 결제 수단별 통계 보기")
+        print("6. 종료")
+      
         choice = input("선택 > ")
 
         if choice == "1":
@@ -31,9 +33,16 @@ def main():
             budget.total_spent()
 
         elif choice == "4":
+            try:
+                budget_amount = int(input("월별 목표 예산 금액을 입력하십시오 (₩): "))
+                budget.set_budget(budget_amount)
+            except ValueError:
+                print("유효한 금액을 입력하십시오.")
+
+        elif choice == "5":
             budget.report_by_payment_method()
 
-        elif choice == "5": 
+        elif choice == "6": 
             print("가계부 프로그램을 종료합니다.")
             break
 
